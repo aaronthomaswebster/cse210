@@ -72,7 +72,8 @@ class PromptGenerator
             Console.WriteLine("Please select one of the following options:");
             Console.WriteLine("1. Add a prompt");
             Console.WriteLine("2. Display all prompts");
-            Console.WriteLine("3. Load new prompt file");
+            Console.WriteLine("3. Load different prompt file");
+            Console.WriteLine("4. Create new prompt file");
             Console.WriteLine("0. Exit");
             Console.Write("> ");
             option = Console.ReadLine();
@@ -89,6 +90,13 @@ class PromptGenerator
                     Console.Write("> ");
                     _promptFileName = Console.ReadLine();
                     loadPrompts();
+                    break;
+                case "4":
+                    Console.WriteLine("Enter the file name to create:");
+                    Console.Write("> ");
+                    _prompts.Clear();
+                    _promptFileName = Console.ReadLine();
+                    savePrompts();
                     break;
             }
 
