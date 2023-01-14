@@ -96,7 +96,8 @@ class PromptGenerator
                     Console.Write("> ");
                     _prompts.Clear();
                     _promptFileName = Console.ReadLine();
-                    savePrompts();
+                    Console.WriteLine("Add initail promt:");
+                    AddPrompt();
                     break;
             }
 
