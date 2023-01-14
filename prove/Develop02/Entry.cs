@@ -13,14 +13,14 @@ class Entry
     }
 
     public Entry(String entryString){
-        String[] entryParts = entryString.Split(',');
+        String[] entryParts = entryString.Split("~||~");
         _dateString = entryParts[0];
         _prompt = entryParts[1];
         _response = entryParts[2];
     }
 
     public String Save(){
-        return $"{_dateString},{_prompt},{_response}";
+        return $"{_dateString}~||~{_prompt}~||~{_response}";
     }
 
     public void Display(){

@@ -8,14 +8,7 @@ class Journal
         _entries = new List<Entry>();
     }
 
-    public Journal(String journalString){
-        _entries = new List<Entry>();
-        String[] entryStrings = journalString.Split("~||~");
-        foreach(String entryString in entryStrings){
-            Entry entry = new Entry(entryString);
-            _entries.Add(entry);
-        }
-    }
+    
     
     public void AddEntry(PromptGenerator promptGenerator){
         if(promptGenerator == null){
@@ -36,11 +29,25 @@ class Journal
         }
     }
 
-    public String Save(){
-        String journalString = "";
-        foreach(Entry entry in _entries){
-            journalString += entry.Save() +"~||~";
+    public void Save(String fileName){
+        using (StreamWriter sw = new StreamWriter(fileName))
+        {
+            foreach(Entry entry in _entries){
+                sw.WriteLine(entry.Save());
+            }
         }
-        return journalString;
+    }
+
+    public void Load(String fileName){
+        _entries.Clear();
+        using (StreamReader sr = new StreamReader(fileName))
+        {
+            String line;
+            while ((line = sr.ReadLine()) != null)
+            {
+                Entry entry = new Entry(line);
+                _entries.Add(entry);
+            }
+        }
     }
 }

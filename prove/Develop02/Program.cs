@@ -18,7 +18,7 @@ class Program
             Console.WriteLine("2. Display all entries");
             Console.WriteLine("3. Load journal");
             Console.WriteLine("4. Save journal");
-            Console.WriteLine("5. Change Prompt File");
+            Console.WriteLine("5. Update prompts");
             Console.WriteLine("0. Exit");
             Console.Write("> ");
             option = Console.ReadLine();
@@ -32,13 +32,19 @@ class Program
                     journal.Display();
                     break;
                 case "3":
-                    // code block
+                    Console.WriteLine("Enter the file name to load:");
+                    Console.Write("> ");
+                    string fileName = Console.ReadLine();
+                    journal.Load(fileName);
                     break;
                 case "4":
-                    // code block
+                    Console.WriteLine("Enter the file name to save:");
+                    Console.Write("> ");
+                    fileName = Console.ReadLine();
+                    journal.Save(fileName);
                     break;
                 case "5":
-                    // code block
+                    promptGenerator.Menu();
                     break;
             }
 
