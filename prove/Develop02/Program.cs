@@ -13,6 +13,7 @@ class Program
         Console.WriteLine("Welcome to the Journal Program!");
         string option = "";
         while (option != "0"){
+            Console.WriteLine("");
             Console.WriteLine("Please select one of the following options:");
             Console.WriteLine("1. Add an entry");
             Console.WriteLine("2. Display all entries");

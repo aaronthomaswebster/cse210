@@ -69,6 +69,7 @@ class PromptGenerator
         string option = "";
         while (option != "0")
         {
+            Console.WriteLine("");
             Console.WriteLine("Please select one of the following options:");
             Console.WriteLine("1. Add a prompt");
             Console.WriteLine("2. Display all prompts");
