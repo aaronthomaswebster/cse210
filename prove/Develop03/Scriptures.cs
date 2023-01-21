@@ -60,16 +60,31 @@ static class Scriptures
                 Console.WriteLine("Invalid chapter number");
             }
         }
-        int verse = 0;
-        while(verse <1 || verse > book.GetChapter(chapter).GetNumberOfVerses()){
+        int startVerse = 0;
+        int endVerse = 0;
+        Console.WriteLine("Would you like to select a multiple verses? (y/n)");
+        string response = Console.ReadLine();
+        
+        while(startVerse <1 || startVerse > book.GetChapter(chapter).GetNumberOfVerses()){
             Console.Write("Select a verse number between 1 and " + book.GetChapter(chapter).GetNumberOfVerses() + ": ");
             try{
-                verse = int.Parse(Console.ReadLine());
+                startVerse = int.Parse(Console.ReadLine());
             } catch(Exception e){
                 Console.WriteLine("Invalid verse number");
             }
         }
-        return GetScripture(standardWork, book.GetName(), chapter, verse);
+        if(response.Equals("y") && startVerse != book.GetChapter(chapter).GetNumberOfVerses()){
+            while(endVerse <= startVerse || endVerse > book.GetChapter(chapter).GetNumberOfVerses()){
+                Console.Write("Select a verse number between "+startVerse+1+" and " + book.GetChapter(chapter).GetNumberOfVerses() + ": ");
+                try{
+                    endVerse = int.Parse(Console.ReadLine());
+                } catch(Exception e){
+                    Console.WriteLine("Invalid verse number");
+                }
+            }
+            return GetScripture(standardWork, book.GetName(), chapter, startVerse, endVerse);
+        }
+        return GetScripture(standardWork, book.GetName(), chapter, startVerse);
     }
 
     public static Scripture GetScripture(String standardWork, String book, int chapter, int verse)
