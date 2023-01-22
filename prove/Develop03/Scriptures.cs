@@ -75,7 +75,7 @@ static class Scriptures
         }
         if(response.Equals("y") && startVerse != book.GetChapter(chapter).GetNumberOfVerses()){
             while(endVerse <= startVerse || endVerse > book.GetChapter(chapter).GetNumberOfVerses()){
-                Console.Write("Select a verse number between "+startVerse+1+" and " + book.GetChapter(chapter).GetNumberOfVerses() + ": ");
+                Console.Write("Select a verse number between "+(startVerse+1)+" and " + book.GetChapter(chapter).GetNumberOfVerses() + ": ");
                 try{
                     endVerse = int.Parse(Console.ReadLine());
                 } catch(Exception e){
