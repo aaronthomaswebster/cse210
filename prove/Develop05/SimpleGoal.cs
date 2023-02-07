@@ -3,28 +3,34 @@ using System;
 public class SimpleGoal:Goal{
     private int _completionBonus;
 
-    public SimpleGoal(String name, String description, int score, int completionBonus): base(name, description, score, completionBonus)
+    public SimpleGoal(String name, String description, int completionBonus): base(name, description, 0, completionBonus)
     {
        
-        _name = name;
-        _description = description;
-        _score = score;
-        _completionBonus = completionBonus;
     }
 
-    public override void Display()
+    public override String Display()
     {
-        throw new NotImplementedException();
+        string completeSymbol = IsComplete() ? "X" : " ";
+        return $"[{completeSymbol}] {_name}  ({_description})";
     }
 
-    public override void DoGoal()
+   public override void DoGoal()
     {
-        throw new NotImplementedException();
+        _numberOfTimesCompleted++;
+    }
+    public override int GetScore()
+    {
+        return _completionScore * _numberOfTimesCompleted;
     }
 
     public override bool IsComplete()
     {
-        throw new NotImplementedException();
+        return _numberOfTimesCompleted == 1;
+    }
+    
+    public override String Save()
+    {
+        return $"SimpleGoal~||~{_name}~||~{_description}~||~{_completionScore}~||~{_numberOfTimesCompleted}";
     }
 
 }

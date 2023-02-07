@@ -1,0 +1,4 @@
+EternalGoal~||~eternal goal~||~this is a e~||~0~||~0
+SimpleGoal~||~simple completed~||~completed goal~||~6~||~1
+ListGoal~||~This is a check list goal~||~partialy complted~||~100~||~10~||~100~||~4
+SimpleGoal~||~simple~||~asdf~||~6~||~0

@@ -3,18 +3,30 @@ using System;
 public class EternalGoal: Goal
 {
 
-    public EternalGoal(String name, String description, int score) : base(name, description, score, 0)
+    public EternalGoal(String name, String description, int completionScore) : base(name, description, completionScore, 0)
     {
+        
     }
 
-    public override void Display()
+   
+    public override String Display()
     {
-        throw new NotImplementedException();
+        string completeSymbol = IsComplete() ? "X" : " ";
+        return $"[{completeSymbol}] {_name}  ({_description})";
     }
-
     public override void DoGoal()
     {
-        throw new NotImplementedException();
+        _numberOfTimesCompleted++;
+    }
+
+    public override String Save()
+    {
+        return $"EternalGoal~||~{_name}~||~{_description}~||~{_completionScore}~||~{_numberOfTimesCompleted}";
+    }
+
+    public override int GetScore()
+    {
+        return _completionScore * _numberOfTimesCompleted;
     }
 
     public override bool IsComplete()

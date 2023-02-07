@@ -2,9 +2,10 @@ using System;
 
 public abstract class Goal{
 
-    private String _name;
-    private String _description;
-    private int _completionScore;
+    protected String _name;
+    protected String _description;
+    protected int _completionScore;
+    protected int _numberOfTimesCompleted;
 
     public Goal(String name, String description, int score, int completionScore){
         _name = name;
@@ -12,9 +13,13 @@ public abstract class Goal{
         _completionScore = completionScore;
     }
     
-    public abstract void Display();
+    public abstract String Display();
 
    public abstract void DoGoal();
 
+   public abstract int GetScore();
+
    public abstract bool IsComplete();
+
+   public abstract String Save();
 }

@@ -1,23 +1,36 @@
 using System;
 
-public abstract class ListGoal: Goal{
-
-    public ListGoal(String name, String description, int score, int completionBonus): base(name, description, score, completionBonus)
+public class ListGoal: Goal{
+    private int _timesToComplete;
+    private int _completionBonus;
+    public ListGoal(String name, String description, int completionScore, int timesToComplete, int completionBonus): base(name, description, completionScore, completionBonus)
     {
+        _timesToComplete = timesToComplete;
+        _completionBonus = completionBonus;
     }
-    public override void Display()
+    public override String Display()
     {
-        throw new NotImplementedException();
+        string completeSymbol = IsComplete() ? "X" : " ";
+        return $"[{completeSymbol}] {_name}  ({_description}) -- Currently Complted: {_numberOfTimesCompleted}/{_timesToComplete}";
     }
 
     public override void DoGoal()
     {
-        throw new NotImplementedException();
+        _numberOfTimesCompleted++;
     }
 
+    public override int GetScore()
+    {
+        int completionBonus = IsComplete() ? _completionBonus : 0;
+        return (_completionScore * _numberOfTimesCompleted) + completionBonus;
+    }
     public override bool IsComplete()
     {
-        throw new NotImplementedException();
+        return _numberOfTimesCompleted == _timesToComplete;
     }
     
+    public override String Save()
+    {
+        return $"ListGoal~||~{_name}~||~{_description}~||~{_completionScore}~||~{_timesToComplete}~||~{_completionBonus}~||~{_numberOfTimesCompleted}";
+    }
 }
