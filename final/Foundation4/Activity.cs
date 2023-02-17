@@ -2,7 +2,7 @@ using System;
 
 class Activity
 {
-    protected DateOnly _date;
+    private DateOnly _date;
     protected double _durationInMinutes;
     private string _activityType;
     public Activity(DateOnly date, double duration, string activityType)
